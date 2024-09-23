@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>この警告を無視してはなりません</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #ffffff;
+            border: 1px solid black;
+            color: #000000;
+            padding: 10px;
+            display: flex; /* フレックスボックスを使用 */
+            align-items: center; /* 縦方向中央揃え */
+            justify-content: space-between; /* 横方向に間隔を均等に */
+        }
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .disclaimer-text {
+            margin: 0; /* マージンをリセット */
+        }
+
+        /* メッセージ部分 */
+        .alert_msg {
+            padding: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .alert_msg h1, .alert_msg h2 {
+            text-align: center;
+            color: yellow;
+        }
+
+        .alert_msg h1 {
+            font-size: 3rem;
+        }
+
+        .alert_msg h2 {
+            font-size: 2rem;
+        }
+
+        .alert_msg p {
+            font-size: 1.2rem;
+            color: yellow;
+            text-align: center;
+        }
+
+        /* 赤部分 */
+        .red_msg {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* 水平方向の中央揃え */
+            align-items: center;     /* 垂直方向の中央揃え */
+            background-color: red; /* 背景色（赤） */
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .inquire {
+            color: black;
+            background-color: rgb(216, 216, 65); /* 背景色（赤） */
+            padding: 10px;
+            margin: 20px 0;
+        }
+
+        .countdown {
+            font-size: 5rem;
+            background-color: #830202;
+            margin-top: 10px;
+        }
+
+        #hiddenElement {
+            font-size: 2rem;
+            display: none;
+        }
+
+        /* レスポンシブデザイン */
+        @media (max-width: 768px) {
+            .alert_msg h1 {
+                font-size: 2rem;
+            }
+
+            .alert_msg h2 {
+                font-size: 1.5rem;
+            }
+
+            .alert_msg p {
+                font-size: 1rem;
+            }
+
+            .countdown {
+                font-size: 3rem;
+            }
+
+            .red_msg h1 {
+                font-size: 1.5rem;
+            }
+
+            .inquire h1 {
+                font-size: 1rem;
+            }
+
+            #hiddenElement {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .alert_msg h1 {
+                font-size: 1.5rem;
+            }
+
+            .alert_msg h2 {
+                font-size: 1.2rem;
+            }
+
+            .alert_msg p {
+                font-size: 0.9rem;
+            }
+
+            .countdown {
+                font-size: 2rem;
+            }
+
+            .red_msg h1 {
+                font-size: 1.2rem;
+            }
+
+            .inquire h1 {
+                font-size: 0.8rem;
+            }
+
+            #hiddenElement {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header" id="disclaimer">
+      <div>
+        <h1>免責表示</h1>
+        <p class="disclaimer-text">この情報は参考のためのものであり、正確性を保証するものではありません。</p>
+      </div>
+      <button class="close-btn" onclick="toggleDisclaimer()">×</button>
+    </div>
+
+    <div class="container">
+      <div class="alert_msg">
+        <h1>警告</h1>
+        <h2>違反事項：動画の違法視聴</h2>
+        <p>法律違反行為が確認されました。この動画を違法に視聴またはダウンロードする行為は、著作権法に違反する重大な犯罪です。
+          違法な視聴や配信は、映画や番組の制作者に深刻な損害を与えるだけでなく、視聴者自身も法律による罰則を受ける可能性があります。</p>
+      </div>
+      <div class="red_msg">
+        <div>
+          <h1>お支払いが確認できない場合は法的措置をとらせていただきますのでご注意下さい。</h1>
+          <div class="inquire">
+            <h1>振込先：NKD銀行　NKD支店　普通：○○○○○○○○</h1>
+            <h1>お問い合わせ先：XXX-XXXX-XXXX</h1>
+          </div>
+          <div class="countdown" id="countdown">00:00:00</div>
+          <a href="https://hanakus0.github.io/ero_ads_memory/" id="hiddenElement">【元のサイトに戻る】</a>
+          <h2>※お振込みが確認できなかった場合はとんでもないことになります。具体的には言えませんが。</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- スクリプト -->
+    <script>
+        function toggleDisclaimer() {
+            const disclaimer = document.getElementById('disclaimer');
+            disclaimer.style.display = disclaimer.style.display === 'none' ? 'flex' : 'none';
+        }
+
+        // ページ読み込み時に免責表示を表示
+        window.onload = function() {
+          // alert("※このページは架空の");
+            document.getElementById('disclaimer').style.display = 'flex';
+        };
+
+        /** カウントダウン */
+        let countdownValue = 30; // カウントダウンの秒数
+        const countdownElement = document.getElementById('countdown');
+        const link_el = document.getElementById('hiddenElement');
+
+        const countdownTimer = setInterval(() => {
+            const hours = Math.floor(countdownValue / 3600);
+            const minutes = Math.floor((countdownValue % 3600) / 60);
+            const seconds = countdownValue % 60;
+
+            countdownElement.textContent =
+                String(hours).padStart(2, '0') + ':' +
+                String(minutes).padStart(2, '0') + ':' +
+                String(seconds).padStart(2, '0');
+
+            countdownValue--;
+
+            if (countdownValue < 0) {
+                clearInterval(countdownTimer);
+                countdownElement.textContent = 'いやーん！えっちー！';
+                link_el.style.display = 'block'; // 要素を表示
+                alert('あなたはとんでもないエロ野郎です');
+            }
+        }, 1000); // 1秒ごとにカウントダウン
+    </script>
+</body>
+</html>
