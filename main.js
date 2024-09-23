@@ -23,6 +23,12 @@ function set_image_src(target_img) {
 /**
  * 広告表示プロセス
 */
+const display_popup_time = 2500;
+const display_slide_inout_time = 2500;
+const display_zoom_time = 2500;
+const display_slide_down_time = 2500;
+const display_bounce_time = 2500;
+
 /** popup */
 const display_popup_ad = function (){
   // 画像セット
@@ -34,7 +40,7 @@ const display_popup_ad = function (){
   // 数秒後にポップアップを表示する
   setTimeout(function() {
     popup.classList.add('show');
-  }, 2000);
+  }, display_popup_time);
 
   // 閉じるボタンをクリックしたらポップアップを非表示にする
   closeBtn.onclick = function() {
@@ -63,7 +69,7 @@ const display_slide_inout_ad = function (){
       // アニメーション後にポップアップを非表示
       // 非同期処理はアニメーションの時間と同じだけ待つ
         document.getElementById('slide_inout').style.display = 'none';
-        setTimeout(display_slide_inout_ad, 2500);
+        setTimeout(display_slide_inout_ad, display_slide_inout_time);
     }, 500);
   }
 };
@@ -79,7 +85,7 @@ const display_zoom_ad = function() {
   // 数秒後にポップアップを拡大表示する
   setTimeout(function() {
       popup.classList.add('show');
-  }, 3000);
+  }, display_zoom_time);
 
   // 閉じるボタンをクリックしたらポップアップを縮小して非表示にする
   closeBtn.onclick = function() {
@@ -98,7 +104,7 @@ const display_slide_down_ad = function() {
     // 数秒後にポップアップを拡大表示する
     setTimeout(function() {
       document.getElementById('slide_down').style.display = 'flex';
-  }, 3500);
+  }, 2500);
 
   closeSlideDownButton.addEventListener('click', () => {
     // ポップアップを非表示
@@ -129,7 +135,7 @@ const display_bounce_ad = function() {
   closeButton.addEventListener('click', () => {
       hidebounce();
       // 数秒後に再表示
-      setTimeout(showbounce, 4000); // 5秒後に再表示
+      setTimeout(showbounce, 2500); // 5秒後に再表示
   });
 }
 
