@@ -50,10 +50,10 @@ RUNTEQ内イベント「【'24シルバー】ミニアプリWeek応募フォー�
 
 ### <関連ソース>
 - https://jp.globalvoices.org/2023/08/04/61341/
-- https://www.forbes.com/sites/jaymcgregor/2014/08/15/the-man-who-invented-pop-up-ads-says-im-sorry/
 - https://gigazine.net/news/20140819-pop-up-apology/
 - https://www.dazeddigital.com/artsandculture/article/21296/1/inventor-of-pop-up-ads-im-sorry
 - https://japan.cnet.com/article/35052472/
+- https://www.forbes.com/sites/jaymcgregor/2014/08/15/the-man-who-invented-pop-up-ads-says-im-sorry/
 
 ---
 
@@ -70,6 +70,11 @@ RUNTEQ内イベント「【'24シルバー】ミニアプリWeek応募フォー�
     - [広告画像1](https://pxhere.com/ja/photo/1437789)
     - [広告画像2](https://pxhere.com/ja/photo/1438109)
     - [広告画像3](https://pxhere.com/ja/photo/1437879)
+    - [広告画像4(1)](https://pxhere.com/ja/photo/611041)
+    - [広告画像4(2)](https://pxhere.com/ja/photo/1159337)
+    - [広告画像5(1)](https://pxhere.com/ja/photo/1640118)
+    - [広告画像5(2)](https://pxhere.com/ja/photo/1679886)
+    - [広告画像5(3)](https://pxhere.com/ja/photo/839604)
     - [動画サムネイル画像](https://pxhere.com/ja/photo/876519)
 
 ## アプリ詳細
