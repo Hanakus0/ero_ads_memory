@@ -46,23 +46,6 @@ body {
   }
 }
 
-/** 折り畳み部分 */
-.details {
-  position: absolute; /* positionをrelativeに変更 */
-  top: 0; /* topを0に設定 */
-  left: 0; /* leftを0に設定 */
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  padding: 0.5em 0.5em 0;
-  background-color: #fff;
-}
-
-details summary {
-  font-weight: bold;
-  margin: -0.5em -0.5em 0;
-  padding: 0.5em;
-}
-
 /* スマホ用メディアクエリ */
 @media (max-width: 600px) {
   .container {
