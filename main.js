@@ -109,6 +109,9 @@ const display_slide_down_ad = function() {
   
 /** bounce */
 const display_bounce_ad = function() {
+  // 画像セット
+  set_image_src('bounce_img');
+
   const bounce = document.getElementById('bounce');
   const closeButton = document.getElementById('bounce_close-button');
 
