@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+/* body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+} */
+
+.ad_img {
+  border-radius: 5px;
+  max-width: 100%; /* 幅を100%に設定して、親要素に合わせる */
+  height: auto; /* 高さを自動調整 */
+}
+
+.slide_down {
+  display: none; /* 初期状態は非表示 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: slideDown 0.5s forwards; /* スライドダウンアニメーション */
+}
+.slide_down-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  max-width: 90%; /* スマホ対応 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.slide_down-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+@keyframes slideDown {
+  from { top: -100%; }
+  to { top: 0; }
+}

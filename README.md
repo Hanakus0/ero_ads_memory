@@ -52,6 +52,8 @@ RUNTEQ内イベント「【'24シルバー】ミニアプリWeek応募フォー�
 - https://jp.globalvoices.org/2023/08/04/61341/
 - https://www.forbes.com/sites/jaymcgregor/2014/08/15/the-man-who-invented-pop-up-ads-says-im-sorry/
 - https://gigazine.net/news/20140819-pop-up-apology/
+- https://www.dazeddigital.com/artsandculture/article/21296/1/inventor-of-pop-up-ads-im-sorry
+- https://japan.cnet.com/article/35052472/
 
 ---
 

@@ -9,13 +9,14 @@ function set_image_src(target_img) {
     'ad01.png',
     'ad02.png',
     'ad03.png',
+    'ad04.png',
+    'ad05.png',
   ];
   const image_path = './images/' // 画像のフォルダーパス
   const ad_img_src = document.getElementById(target_img); // ソース属性取得
-  const image_num = 3; // 画像枚数
-  const index = Math.floor(Math.random() * image_num); // 画像番号
+  const index = Math.floor(Math.random() * images_name.length); // 画像番号
 
-  // process
+  // パスを生成し src にセット
   ad_img_src.src = image_path.concat(images_name[index]);
 }
 
@@ -43,26 +44,31 @@ const display_popup_ad = function (){
   };
 }
 
-/** slide_in */
-const display_slide_in_ad = function (){
+/** slide_inout */
+const display_slide_inout_ad = function (){
   // 画像セット
-  set_image_src('slide_in_img');
+  set_image_src('slide_inout_img');
+  // ポップアップを表示
+  document.getElementById('slide_inout').style.display = 'flex';
+  const slideInoutContent = document.getElementById('slide_inout-content');
+  // スライドインアニメーション
+  slideInoutContent.style.animation = 'slideIn 0.5s forwards'; 
 
-  const popup = document.getElementById('slide_in');
-  const closeBtn = document.getElementById('slide_in-close-btn');
-
-  // 数秒後にポップアップをスライドインさせる
-  setTimeout(function() {
-      popup.classList.add('show');
-  }, 2500);
-
-  // 閉じるボタンをクリックしたらポップアップをスライドアウトさせる
+  // 閉じるボタンをクリックしたらポップアップを非表示にする
+  const closeBtn = document.getElementById('slide_inout-close-btn');
   closeBtn.onclick = function() {
-      popup.classList.remove('show');
-      display_slide_in_ad(); // ループ用
-  };
+    // スライドアウトアニメーションを適用
+    slideInoutContent.style.animation = 'slideOut 0.5s forwards';
+    setTimeout(() => {
+      // アニメーション後にポップアップを非表示
+      // 非同期処理はアニメーションの時間と同じだけ待つ
+        document.getElementById('slide_inout').style.display = 'none';
+        setTimeout(display_slide_inout_ad, 3000);
+    }, 500);
+  }
 };
 
+/** zoom */
 const display_zoom_ad = function() {
   // 画像セット
   set_image_src('zoom_img');
@@ -73,7 +79,7 @@ const display_zoom_ad = function() {
   // 数秒後にポップアップを拡大表示する
   setTimeout(function() {
       popup.classList.add('show');
-  }, 500);
+  }, 2000);
 
   // 閉じるボタンをクリックしたらポップアップを縮小して非表示にする
   closeBtn.onclick = function() {
@@ -82,10 +88,30 @@ const display_zoom_ad = function() {
   };
 };
 
+/** slide_down */
+const display_slide_down_ad = function() {
+  // 画像セット
+  set_image_src('slide_down_img');
+  
+  // ページロード時にポップアップを表示
+  const closeSlideDownButton = document.getElementById('slide_down-close-btn');
+    // 数秒後にポップアップを拡大表示する
+    setTimeout(function() {
+      document.getElementById('slide_down').style.display = 'flex';
+  }, 1500);
+
+  closeSlideDownButton.addEventListener('click', () => {
+    // ポップアップを非表示
+    document.getElementById('slide_down').style.display = 'none';
+    display_slide_down_ad();
+  });
+};
+  
 
 /** 
  * トリガー 
  * */
-window.onload = display_popup_ad();
-window.onload = display_slide_in_ad();
-window.onload = display_zoom_ad();
+// window.onload = display_popup_ad();
+window.onload = display_slide_inout_ad();
+// window.onload = display_zoom_ad();
+// window.onload = display_slide_down_ad();

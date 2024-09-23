@@ -6,51 +6,66 @@
   <link rel="icon" href="./images/h_favicon.png">
   <link rel="stylesheet" href="./stylesheets/main.css">
   <link rel="stylesheet" href="./stylesheets/pop_up_ad.css" type="text/css">
-  <link rel="stylesheet" href="./stylesheets/slide_in_ad.css" type="text/css">
+  <link rel="stylesheet" href="./stylesheets/slide_inout_ad.css" type="text/css">
   <link rel="stylesheet" href="./stylesheets/zoom_ad.css" type="text/css">
+  <link rel="stylesheet" href="./stylesheets/slide_down_ad.css" type="text/css">
   <title>えっちなさいとのおもひで</title>
 </head>
 <body>
 <!---  メインコンテンツ部分  --->
   <div class="container">
   
-    <!---  popup  --->
-    <div id="popup" class="popup">
-      <div class="popup-content">
-        <span class="popup-close-btn" id="popup-close-btn">&times;</span>
-        <a href="https://jp.globalvoices.org/2023/08/04/61341/" target="_blank">
-          <img src="./images/ad01.png" alt="サンプル" class="ad_img" id="popup_img">
-        </a>
-      </div>
+  <!---  popup  --->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="popup-close-btn" id="popup-close-btn">&times;</span>
+      <a href="https://jp.globalvoices.org/2023/08/04/61341/" target="_blank">
+        <img src="./images/ad01.png" alt="サンプル" class="ad_img" id="popup_img">
+      </a>
     </div>
-    
-    <!---  slide_in  --->
-   <div id="slide_in" class="slide_in">
-    <div class="slide_in-content">
-        <span class="slide_in-close-btn" id="slide_in-close-btn">&times;</span>
-        <a href="https://www.forbes.com/sites/jaymcgregor/2014/08/15/the-man-who-invented-pop-up-ads-says-im-sorry/" target="_blank">
-          <img src="./images/ad02.png" alt="サンプル" class="ad_img" id="slide_in_img">
+  </div>
+
+  <!---  slide_inout  --->
+  <div class="slide_inout" id="slide_inout">
+    <div class="slide_inout-content" id="slide_inout-content">
+        <button class="slide_inout-close-btn" id="slide_inout-close-btn">&times;</button>
+        <h2>この広告が表示されたらラッキー</h2>
+        <a href="https://japan.cnet.com/article/35052472/" target="_blank">
+          <img src="./images/ad02.png" alt="サンプル" class="ad_img" id="slide_inout_img">
         </a>
+        <p>※この広告を見逃したら二度と表示されません</p>
     </div>
   </div>
     
-    <!---  zoom  --->
-    <div id="zoom" class="zoom">
-      <div class="zoom-content">
-        <span class="zoom_close-btn" id="zoom_close-btn">&times;</span>
-        <a href="https://gigazine.net/news/20140819-pop-up-apology/" target="_blank">
-          <img src="./images/ad03.png" alt="サンプル" class="ad_img" id="zoom_img">
-        </a>
-      </div>
-    </div>
-
-    <!-- 工口い動画 -->
-     <div id="ero">
-      <a href="./played.html" target="_blank">
-        <img src="./images/ero_movie.png" alt="サンプル" id="ero_img">
+  <!---  zoom  --->
+  <div id="zoom" class="zoom">
+    <div class="zoom-content">
+      <span class="zoom_close-btn" id="zoom_close-btn">&times;</span>
+      <a href="https://gigazine.net/news/20140819-pop-up-apology/" target="_blank">
+        <img src="./images/ad03.png" alt="サンプル" class="ad_img" id="zoom_img">
       </a>
     </div>
-    <h1 id="ero_title">【8K】【VR】【最新作】<br>超ド工口い動画</h1>
+  </div>
+        
+  <!---  slide_down  --->
+  <div class="slide_down" id="slide_down">
+    <div class="slide_down-content">
+        <button class="slide_down-close-btn" id="slide_down-close-btn">&times;</button>
+        <h2>あなただけの特別オファー！！</h2>
+        <a href="https://www.dazeddigital.com/artsandculture/article/21296/1/inventor-of-pop-up-ads-im-sorry" target="_blank">
+          <img src="./images/ad03.png" alt="サンプル" class="ad_img" id="slide_down_img">
+        </a>
+        <h3>今すぐチェックしてね！</h3>
+    </div>
+  </div>
+
+  <!-- 工口い動画 -->
+  <div id="ero">
+    <a href="./played.html" target="_blank">
+      <img src="./images/ero_movie.png" alt="サンプル" id="ero_img">
+    </a>
+  </div>
+  <h1 id="ero_title">【8K】【VR】【最新作】<br>超ド工口い動画</h1>
 
   <script type="module" src="./main.js"></script>
 </body>
