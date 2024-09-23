@@ -6,17 +6,28 @@
   padding: 0;
 } */
 
+.ad_img {
+  border-radius: 5px;
+  max-width: 100%; /* 幅を100%に設定して、親要素に合わせる */
+  height: auto; /* 高さを自動調整 */
+  display: block; /* 画像をブロック要素にする */
+  margin: 0 auto; /* 中央寄せ */
+}
+
 .zoom {
   position: fixed;
-  top: 50%;
-  left: 40%;
+  top: 42%;
+  left: 50%; /* 左寄せを50%に変更 */
   transform: translate(-50%, -50%) scale(0);
   width: 80%;
-  max-width: 400px;
+  max-width: 600px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   opacity: 0;
   transition: transform 0.5s ease, opacity 0.5s ease;
+  display: flex;
+  flex-direction: column; /* 縦方向に要素を並べる */
+  align-items: center; /* 中央揃え */
 }
 
 .zoom-content {
@@ -29,8 +40,8 @@
 
 .zoom_close-btn {
   position: absolute;
-  top: 10px;
-  right: -200px;
+  top: 15px;
+  right: 30px; /* 右側の位置を調整 */
   font-size: 20px;
   cursor: pointer;
 }
@@ -38,4 +49,21 @@
 .zoom.show {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
+}
+
+/* スマホ用メディアクエリ */
+@media (max-width: 600px) {
+  .zoom {
+    width: 90%; /* スマホでは幅を90%に */
+    max-width: none; /* 最大幅を解除して、親要素に合わせる */
+  }
+
+  .zoom_close-btn {
+    font-size: 18px; /* スマホ向けにフォントサイズを調整 */
+    right: 15px; /* スマホ向けに位置を調整 */
+  }
+
+  .zoom-content {
+    padding: 15px; /* スマホ向けのパディング調整 */
+  }
 }

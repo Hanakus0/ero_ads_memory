@@ -1,11 +1,36 @@
 'use strict;'
 
+/**
+ * 画像ランダムプロセス
+*/
+function set_image_src(target_img) {
+  // 画像名
+  const images_name = [
+    'ad01.png',
+    'ad02.png',
+    'ad03.png',
+  ];
+  const image_path = './images/' // 画像のフォルダーパス
+  const ad_img_src = document.getElementById(target_img); // ソース属性取得
+  const image_num = 3; // 画像枚数
+  const index = Math.floor(Math.random() * image_num); // 画像番号
+
+  // process
+  ad_img_src.src = image_path.concat(images_name[index]);
+}
+
+/**
+ * 広告表示プロセス
+*/
 /** popup */
 const display_popup_ad = function (){
+  // 画像セット
+  set_image_src('popup_img');
+
   const popup = document.getElementById('popup');
   const closeBtn = document.getElementById('popup-close-btn');
 
-  // 2秒後にポップアップを表示する
+  // 数秒後にポップアップを表示する
   setTimeout(function() {
     popup.classList.add('show');
   }, 1000);
@@ -20,13 +45,16 @@ const display_popup_ad = function (){
 
 /** slide_in */
 const display_slide_in_ad = function (){
+  // 画像セット
+  set_image_src('slide_in_img');
+
   const popup = document.getElementById('slide_in');
   const closeBtn = document.getElementById('slide_in-close-btn');
 
-  // 1.5秒後にポップアップをスライドインさせる
+  // 数秒後にポップアップをスライドインさせる
   setTimeout(function() {
       popup.classList.add('show');
-  }, 1500);
+  }, 2500);
 
   // 閉じるボタンをクリックしたらポップアップをスライドアウトさせる
   closeBtn.onclick = function() {
@@ -36,10 +64,13 @@ const display_slide_in_ad = function (){
 };
 
 const display_zoom_ad = function() {
+  // 画像セット
+  set_image_src('zoom_img');
+
   const popup = document.getElementById('zoom');
   const closeBtn = document.getElementById('zoom_close-btn');
 
-  // 1秒後にポップアップを拡大表示する
+  // 数秒後にポップアップを拡大表示する
   setTimeout(function() {
       popup.classList.add('show');
   }, 500);
@@ -52,7 +83,9 @@ const display_zoom_ad = function() {
 };
 
 
-/** トリガー */
+/** 
+ * トリガー 
+ * */
 window.onload = display_popup_ad();
 window.onload = display_slide_in_ad();
 window.onload = display_zoom_ad();
