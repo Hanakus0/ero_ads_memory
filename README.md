@@ -1,5 +1,6 @@
 | ... | ... |
 | ---- | ---- |
+| 2024/09/24 | ６枚目の広告画像追加 |
 | 2024/09/24 | 微調整＆リリース |
 | 2024/09/23 | デプロイ |
 
@@ -79,6 +80,8 @@ RUNTEQ内イベント「【'24シルバー】ミニアプリWeek応募フォー�
     - [広告画像5(1)](https://pxhere.com/ja/photo/1640118)
     - [広告画像5(2)](https://pxhere.com/ja/photo/1679886)
     - [広告画像5(3)](https://pxhere.com/ja/photo/839604)
+    - [広告画像6(1)](https://pxhere.com/ja/photo/1358862)
+    - [広告画像6(2)](https://pxhere.com/ja/photo/616076)
     - [動画サムネイル画像](https://pxhere.com/ja/photo/876519)
 
 ## アプリ詳細

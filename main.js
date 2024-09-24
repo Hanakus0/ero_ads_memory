@@ -17,6 +17,7 @@ function set_image_src(target_img) {
     'ad03.png',
     'ad04.png',
     'ad05.png',
+    'ad06.png'
   ];
   const image_path = './images/' // 画像のフォルダーパス
   const ad_img_src = document.getElementById(target_img); // ソース属性取得
