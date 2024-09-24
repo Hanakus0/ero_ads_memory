@@ -1,11 +1,11 @@
 'use strict;'
 
-/**
- * 画像ランダムプロセス
-*/
+/******************************
+ **** 画像ランダムプロセス ****
+******************************/
 function set_image_src(target_img) {
   // 画像名
-  const images_name = [
+  const images_names = [
     'ad01.png',
     'ad02.png',
     'ad03.png',
@@ -14,15 +14,57 @@ function set_image_src(target_img) {
   ];
   const image_path = './images/' // 画像のフォルダーパス
   const ad_img_src = document.getElementById(target_img); // ソース属性取得
-  const index = Math.floor(Math.random() * images_name.length); // 画像番号
+  const index = Math.floor(Math.random() * images_names.length); // 画像番号
 
   // パスを生成し src にセット
-  ad_img_src.src = image_path.concat(images_name[index]);
+  ad_img_src.src = image_path.concat(images_names[index]);
 }
 
-/**
- * 広告表示プロセス
-*/
+/******************************
+ *** z-index のランダム決定 ****
+******************************/
+const z_index_ary = [
+  100,
+  200,
+  300,
+  400,
+  500
+];
+
+function apply_display_order(target_ad) {
+  // 要素の取得
+  const target_ad_div = document.getElementById(target_ad);
+
+  // z-index がある場合
+  if(target_ad_div.style.zIndex  === '') {
+    // Fisher-Yatesアルゴリズム
+    for(let i = (z_index_ary.length - 1); 0 < i; i--){
+      // 0〜(i+1)の範囲で値を取得
+      let r = Math.floor(Math.random() * (i + 1));
+
+      // 要素の並び替えを実行
+      let tmp = z_index_ary[i];
+      z_index_ary[i] = z_index_ary[r];
+      z_index_ary[r] = tmp;
+    }
+
+    // zIndex の操作
+    const z_index = Math.floor(Math.random() * z_index_ary.length); // 配列より取得
+
+    // zIndex をセット
+    // target_ad_div.style.zIndex = z_index_ary[z_index];
+    target_ad_div.style.zIndex = z_index_ary.pop(z_index);
+  } else {
+    // z-index がない場合、zIndex をリセット
+    z_index_ary.push(target_ad_div.style.zIndex);
+    target_ad_div.style.zIndex = '';
+  }
+}
+
+
+/******************************
+ ****** 広告表示プロセス *******
+******************************/
 const display_popup_time = 2500;
 const display_slide_inout_time = 2500;
 const display_zoom_time = 2500;
@@ -33,6 +75,8 @@ const display_bounce_time = 2500;
 const display_popup_ad = function (){
   // 画像セット
   set_image_src('popup_img');
+  // Zindex セット
+  apply_display_order('popup');
 
   const popup = document.getElementById('popup');
   const closeBtn = document.getElementById('popup-close-btn');
@@ -54,6 +98,9 @@ const display_popup_ad = function (){
 const display_slide_inout_ad = function (){
   // 画像セット
   set_image_src('slide_inout_img');
+  // Zindex セット
+  apply_display_order('slide_inout');
+
   // ポップアップを表示
   document.getElementById('slide_inout').style.display = 'flex';
   const slideInoutContent = document.getElementById('slide_inout-content');
@@ -78,6 +125,8 @@ const display_slide_inout_ad = function (){
 const display_zoom_ad = function() {
   // 画像セット
   set_image_src('zoom_img');
+    // Zindex セット
+    apply_display_order('zoom');
 
   const popup = document.getElementById('zoom');
   const closeBtn = document.getElementById('zoom_close-btn');
@@ -98,6 +147,8 @@ const display_zoom_ad = function() {
 const display_slide_down_ad = function() {
   // 画像セット
   set_image_src('slide_down_img');
+  // Zindex セット
+  apply_display_order('slide_down');
   
   // ページロード時にポップアップを表示
   const closeSlideDownButton = document.getElementById('slide_down-close-btn');
@@ -109,19 +160,20 @@ const display_slide_down_ad = function() {
   closeSlideDownButton.addEventListener('click', () => {
     // ポップアップを非表示
     document.getElementById('slide_down').style.display = 'none';
-    display_slide_down_ad();
+    display_slide_down_ad(); // ループ用
   });
 };
   
 /** bounce */
 const display_bounce_ad = function() {
-  // 画像セット
-  set_image_src('bounce_img');
-
   const bounce = document.getElementById('bounce');
   const closeButton = document.getElementById('bounce_close-button');
 
   function showbounce() {
+    // 画像セット
+    set_image_src('bounce_img');
+    // Zindex セット
+    apply_display_order('bounce');
     bounce.style.display = 'block';
   }
 
@@ -140,9 +192,9 @@ const display_bounce_ad = function() {
 }
 
 
-/** 
- * トリガー 
- * */
+/******************************
+ ********** トリガー ***********
+******************************/
 window.onload = display_popup_ad();
 window.onload = display_slide_inout_ad();
 window.onload = display_zoom_ad();
