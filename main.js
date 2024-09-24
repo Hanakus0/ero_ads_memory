@@ -59,6 +59,8 @@ function apply_display_order(target_ad) {
     z_index_ary.push(target_ad_div.style.zIndex);
     target_ad_div.style.zIndex = '';
   }
+
+  console.log( target_ad + ' : ' + target_ad_div.style.zIndex );
 }
 
 
@@ -145,15 +147,14 @@ const display_zoom_ad = function() {
 
 /** slide_down */
 const display_slide_down_ad = function() {
-  // 画像セット
-  set_image_src('slide_down_img');
-  // Zindex セット
-  apply_display_order('slide_down');
-  
   // ページロード時にポップアップを表示
   const closeSlideDownButton = document.getElementById('slide_down-close-btn');
     // 数秒後にポップアップを拡大表示する
     setTimeout(function() {
+      // 画像セット
+      set_image_src('slide_down_img');
+      // Zindex セット
+      apply_display_order('slide_down');
       document.getElementById('slide_down').style.display = 'flex';
   }, 2500);
 
@@ -163,7 +164,7 @@ const display_slide_down_ad = function() {
     display_slide_down_ad(); // ループ用
   });
 };
-  
+
 /** bounce */
 const display_bounce_ad = function() {
   const bounce = document.getElementById('bounce');
@@ -185,8 +186,7 @@ const display_bounce_ad = function() {
   setTimeout(showbounce, 1000); // 1秒後に表示
 
   closeButton.addEventListener('click', () => {
-      hidebounce();
-      // 数秒後に再表示
+      hidebounce(); // 数秒後に再表示
       setTimeout(showbounce, 2500); // 5秒後に再表示
   });
 }
