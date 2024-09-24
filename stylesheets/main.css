@@ -20,6 +20,22 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 影をつける */
 }
 
+/** ロゴ部分 */
+#logo {
+  position: fixed; /* 固定位置 */
+  top: 10px; /* 上からの距離 */
+  left: 10px; /* 左からの距離 */
+  z-index: 1000; /* レイヤーを一番上に */
+  /* width: 60px; */
+
+  #logo_img {
+    width: 10vw; /* ビューポート幅に応じて幅を指定 */
+    height: auto; /* 高さは自動調整 */
+    max-width: 200px; /* 最大幅を設定して、これ以上大きくならないように */
+  }
+}
+
+/** エロ動画部分 */
 #ero {
   padding: auto;
   margin: auto;
@@ -41,15 +57,13 @@ body {
 
 /* スマホ用メディアクエリ */
 @media (max-width: 600px) {
-  #ero_title {
-    font-size: 8vw; /* スマホではさらに大きくする */
-  }
-}
 
-/* スマホ用メディアクエリ */
-@media (max-width: 600px) {
   .container {
     padding: 20px; /* スマホ向けのパディング調整 */
+  }
+  
+  #ero_title {
+    font-size: 8vw; /* スマホではさらに大きくする */
   }
 
   #ero_img {
