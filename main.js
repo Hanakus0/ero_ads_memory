@@ -59,8 +59,6 @@ function apply_display_order(target_ad) {
     z_index_ary.push(target_ad_div.style.zIndex);
     target_ad_div.style.zIndex = '';
   }
-
-  console.log( target_ad + ' : ' + target_ad_div.style.zIndex );
 }
 
 
