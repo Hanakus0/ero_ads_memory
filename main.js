@@ -10,7 +10,6 @@ document.getElementById('logo').addEventListener('click', (event) => {
 
 /////////////////////////////////////////////////////////////////////////
 const popup_next_btn_ad_time = 10000;
-const popup_fake_alert_time = 15000;
 
 /******************************
  ** "next_btn_ad.png"イベント **
@@ -29,29 +28,45 @@ const popup_fake_alert_time = 15000;
     popup.classList.remove('show');
     popup.style.transition = "opacity 0.5s ease, visibility 0s 0.5s"; // 消えるときのアニメーション
     display_next_btn_ad(); // ループ用
+    display_fake_alert();
   };
 })();
 
 /******************************
  ** "fake_alert.png"イベント **
 ******************************/
-(function display_fake_alert() {
-  const closeBtn = document.getElementById('fake_alert-close-btn');
+let close_count = -5; // 初期表示で+5されてしまう関係で-5
+const display_alert_count = 20;
 
-  // 数秒後にポップアップを表示する
-  setTimeout(function() {
+function display_fake_alert() {
+  // 一定回数広告を閉じられたら表示
+  if(close_count === display_alert_count) {
+    const closeBtn = document.getElementById('fake_alert-close-btn');
+    // 数秒後にポップアップを表示する
     document.getElementById('fake_alert').classList.add('active');
-  }, popup_fake_alert_time);
 
-  // 閉じるボタンをクリックしたらポップアップを非表示にする
-  closeBtn.onclick = function() {
-    document.getElementById('fake_alert').classList.remove('active');
-    display_fake_alert(); // ループ用
-  };
-})();
+    // 閉じるボタンをクリックしたらポップアップを非表示にする
+    closeBtn.onclick = function() {
+      document.getElementById('fake_alert').classList.remove('active');
+      display_fake_alert(); // ループ用
+      close_count = 0; // 非表示後に再度カウントリセット
+    };
+  } else {
+    close_count++;
+  }
+};
 
 
 /////////////////////////////////////////////////////////////////////////
+/******************************
+ **** 表示時のルーティン ****
+******************************/
+function display_routine(target_img, animation_name) {
+  set_image_src(target_img);
+  apply_display_order(animation_name);
+  display_fake_alert();
+}
+
 /******************************
  **** 画像ランダムプロセス ****
 ******************************/
@@ -112,6 +127,7 @@ function apply_display_order(target_ad) {
     // z-index がない場合、zIndex をリセット
     z_index_ary.push(target_ad_div.style.zIndex);
     target_ad_div.style.zIndex = '';
+    display_fake_alert();
   }
 }
 
@@ -126,10 +142,7 @@ const display_bounce_time = 2500;
 
 /** popup */
 (function display_popup_ad(){
-  // 画像セット
-  set_image_src('popup_img');
-  // Zindex セット
-  apply_display_order('popup');
+  display_routine('popup_img', 'popup');
 
   const popup = document.getElementById('popup');
   const closeBtn = document.getElementById('popup-close-btn');
@@ -149,10 +162,7 @@ const display_bounce_time = 2500;
 
 /** slide_inout */
 (function display_slide_inout_ad(){
-  // 画像セット
-  set_image_src('slide_inout_img');
-  // Zindex セット
-  apply_display_order('slide_inout');
+  display_routine('slide_inout_img', 'slide_inout');
 
   // ポップアップを表示
   document.getElementById('slide_inout').style.display = 'flex';
@@ -176,10 +186,7 @@ const display_bounce_time = 2500;
 
 /** zoom */
 (function display_zoom_ad() {
-  // 画像セット
-  set_image_src('zoom_img');
-    // Zindex セット
-    apply_display_order('zoom');
+  display_routine('zoom_img', 'zoom');
 
   const popup = document.getElementById('zoom');
   const closeBtn = document.getElementById('zoom_close-btn');
@@ -202,10 +209,7 @@ const display_bounce_time = 2500;
   const closeSlideDownButton = document.getElementById('slide_down-close-btn');
     // 数秒後にポップアップを拡大表示する
     setTimeout(function() {
-      // 画像セット
-      set_image_src('slide_down_img');
-      // Zindex セット
-      apply_display_order('slide_down');
+      display_routine('slide_down_img', 'slide_down');
       document.getElementById('slide_down').style.display = 'flex';
   }, 2500);
 
@@ -222,10 +226,7 @@ const display_bounce_time = 2500;
   const closeButton = document.getElementById('bounce_close-button');
 
   function showbounce() {
-    // 画像セット
-    set_image_src('bounce_img');
-    // Zindex セット
-    apply_display_order('bounce');
+    display_routine('bounce_img', 'bounce');
     bounce.style.display = 'block';
   }
 
