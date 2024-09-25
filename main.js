@@ -9,12 +9,13 @@ document.getElementById('logo').addEventListener('click', (event) => {
 });
 
 /////////////////////////////////////////////////////////////////////////
+const popup_next_btn_ad_time = 10000;
+const popup_fake_alert_time = 15000;
+
 /******************************
  ** "next_btn_ad.png"イベント **
 ******************************/
-const popup_next_btn_ad_time = 10000;
-
-function display_next_btn_ad() {
+(function display_next_btn_ad() {
   const popup = document.getElementById('next_btn_ad');
   const closeBtn = document.getElementById('next_btn_ad-close-button');
 
@@ -29,7 +30,26 @@ function display_next_btn_ad() {
     popup.style.transition = "opacity 0.5s ease, visibility 0s 0.5s"; // 消えるときのアニメーション
     display_next_btn_ad(); // ループ用
   };
-}
+})();
+
+/******************************
+ ** "fake_alert.png"イベント **
+******************************/
+(function display_fake_alert() {
+  const closeBtn = document.getElementById('fake_alert-close-btn');
+
+  // 数秒後にポップアップを表示する
+  setTimeout(function() {
+    document.getElementById('fake_alert').classList.add('active');
+  }, popup_fake_alert_time);
+
+  // 閉じるボタンをクリックしたらポップアップを非表示にする
+  closeBtn.onclick = function() {
+    document.getElementById('fake_alert').classList.remove('active');
+    display_fake_alert(); // ループ用
+  };
+})();
+
 
 /////////////////////////////////////////////////////////////////////////
 /******************************
@@ -45,7 +65,7 @@ function set_image_src(target_img) {
     'ad05.png',
     'ad06.png',
     'ad07.png',
-    'ad08.png',
+    // 'ad08.png',
   ];
   const image_path = './images/' // 画像のフォルダーパス
   const ad_img_src = document.getElementById(target_img); // ソース属性取得
@@ -58,15 +78,14 @@ function set_image_src(target_img) {
 /******************************
  *** z-index のランダム決定 ****
 ******************************/
-const z_index_ary = [
-  100,
-  200,
-  300,
-  400,
-  500
-];
-
 function apply_display_order(target_ad) {
+  const z_index_ary = [
+    100,
+    200,
+    300,
+    400,
+    500
+  ];
   // 要素の取得
   const target_ad_div = document.getElementById(target_ad);
 
@@ -96,7 +115,6 @@ function apply_display_order(target_ad) {
   }
 }
 
-
 /******************************
  ****** 広告表示プロセス *******
 ******************************/
@@ -107,7 +125,7 @@ const display_slide_down_time = 2500;
 const display_bounce_time = 2500;
 
 /** popup */
-const display_popup_ad = function (){
+(function display_popup_ad(){
   // 画像セット
   set_image_src('popup_img');
   // Zindex セット
@@ -127,10 +145,10 @@ const display_popup_ad = function (){
     popup.style.transition = "opacity 0.5s ease, visibility 0s 0.5s"; // 消えるときのアニメーション
     display_popup_ad(); // ループ用
   };
-}
+})();
 
 /** slide_inout */
-const display_slide_inout_ad = function (){
+(function display_slide_inout_ad(){
   // 画像セット
   set_image_src('slide_inout_img');
   // Zindex セット
@@ -154,10 +172,10 @@ const display_slide_inout_ad = function (){
         setTimeout(display_slide_inout_ad, display_slide_inout_time);
     }, 500);
   }
-};
+})();
 
 /** zoom */
-const display_zoom_ad = function() {
+(function display_zoom_ad() {
   // 画像セット
   set_image_src('zoom_img');
     // Zindex セット
@@ -176,10 +194,10 @@ const display_zoom_ad = function() {
       popup.classList.remove('show');
       display_zoom_ad();  // ループ用
   };
-};
+})();
 
 /** slide_down */
-const display_slide_down_ad = function() {
+(function display_slide_down_ad() {
   // ページロード時にポップアップを表示
   const closeSlideDownButton = document.getElementById('slide_down-close-btn');
     // 数秒後にポップアップを拡大表示する
@@ -196,10 +214,10 @@ const display_slide_down_ad = function() {
     document.getElementById('slide_down').style.display = 'none';
     display_slide_down_ad(); // ループ用
   });
-};
+})();
 
 /** bounce */
-const display_bounce_ad = function() {
+(function display_bounce_ad() {
   const bounce = document.getElementById('bounce');
   const closeButton = document.getElementById('bounce_close-button');
 
@@ -222,15 +240,4 @@ const display_bounce_ad = function() {
       hidebounce(); // 数秒後に再表示
       setTimeout(showbounce, 2500); // 5秒後に再表示
   });
-}
-
-
-/******************************
- ********** トリガー ***********
-******************************/
-window.onload = display_popup_ad();
-window.onload = display_slide_inout_ad();
-window.onload = display_zoom_ad();
-window.onload = display_slide_down_ad();
-window.onload = display_bounce_ad();
-window.onload = display_next_btn_ad();
+})();
