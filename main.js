@@ -9,7 +9,7 @@ document.getElementById('logo').addEventListener('click', (event) => {
 });
 
 /////////////////////////////////////////////////////////////////////////
-const popup_next_btn_ad_time = 10000;
+const popup_next_btn_ad_time = 15000;
 
 /******************************
  ** "next_btn_ad.png"イベント **
@@ -35,12 +35,10 @@ const popup_next_btn_ad_time = 10000;
 /******************************
  ** "fake_alert.png"イベント **
 ******************************/
-let close_count = -5; // 初期表示で+5されてしまう関係で-5
-const display_alert_count = 20;
-
 function display_fake_alert() {
-  // 一定回数広告を閉じられたら表示
-  if(close_count === display_alert_count) {
+  let fake_alert_flg = Math.floor(Math.random() * 30);
+
+  if(!fake_alert_flg) {
     const closeBtn = document.getElementById('fake_alert-close-btn');
     // 数秒後にポップアップを表示する
     document.getElementById('fake_alert').classList.add('active');
@@ -49,13 +47,9 @@ function display_fake_alert() {
     closeBtn.onclick = function() {
       document.getElementById('fake_alert').classList.remove('active');
       display_fake_alert(); // ループ用
-      close_count = 0; // 非表示後に再度カウントリセット
     };
-  } else {
-    close_count++;
   }
 };
-
 
 /////////////////////////////////////////////////////////////////////////
 /******************************
