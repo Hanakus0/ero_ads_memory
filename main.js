@@ -1,9 +1,35 @@
 'use strict;'
 
-/** ロゴ押下イベント */
+/////////////////////////////////////////////////////////////////////////
+/******************************
+ **** ロゴ押下イベント ****
+******************************/
 document.getElementById('logo').addEventListener('click', (event) => {
   if(!confirm('github.com に移動します。よろしいですか？')) event.preventDefault();
 });
+
+/////////////////////////////////////////////////////////////////////////
+/******************************
+ ** "next_btn_ad.png"イベント **
+******************************/
+const popup_next_btn_ad_time = 10000;
+
+function display_next_btn_ad() {
+  const popup = document.getElementById('next_btn_ad');
+  const closeBtn = document.getElementById('next_btn_ad-close-button');
+
+  // 数秒後にポップアップを表示する
+  setTimeout(function() {
+    popup.classList.add('show');
+  }, popup_next_btn_ad_time);
+
+  // 閉じるボタンをクリックしたらポップアップを非表示にする
+  closeBtn.onclick = function() {
+    popup.classList.remove('show');
+    popup.style.transition = "opacity 0.5s ease, visibility 0s 0.5s"; // 消えるときのアニメーション
+    display_next_btn_ad(); // ループ用
+  };
+}
 
 /////////////////////////////////////////////////////////////////////////
 /******************************
@@ -19,7 +45,7 @@ function set_image_src(target_img) {
     'ad05.png',
     'ad06.png',
     'ad07.png',
-    // 'ad00.png',
+    'ad08.png',
   ];
   const image_path = './images/' // 画像のフォルダーパス
   const ad_img_src = document.getElementById(target_img); // ソース属性取得
@@ -207,3 +233,4 @@ window.onload = display_slide_inout_ad();
 window.onload = display_zoom_ad();
 window.onload = display_slide_down_ad();
 window.onload = display_bounce_ad();
+window.onload = display_next_btn_ad();
