@@ -9,7 +9,13 @@
 | 2024/09/23 | デプロイ |
 
 ---
-# えっちなさいとのおもひで
+# 【えっちなさいとのおもひで】
+
+# プログラミングスクール内イベントにおいて受賞
+  * RUNTEQアプリ総選挙は、歴代のRUNTEQ生が開発したアプリの中から、投票によりRUNTEQの最強アプリを決定する総選挙（https://runteq.jp/sousenkyo）
+## 【第一回RUNTEQ総選挙 5位入選】
+* 投票いただいた関係者の皆様ありがとうございました
+  * https://www.youtube.com/live/PMRrNESiWv8?si=eflyuBsKe_OqCToM&t=1317
 
 # 概要
 - サイトURL : https://hanakus0.github.io/ero_ads_memory/
