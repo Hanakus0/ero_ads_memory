@@ -18,8 +18,8 @@
   * https://www.youtube.com/live/PMRrNESiWv8?si=eflyuBsKe_OqCToM&t=1317
 
 # 概要
-- サイトURL : https://hanakus0.github.io/ero_ads_memory/
-- リポジトリURL : https://github.com/Hanakus0/ero_ads_memory
+- サイトURL : https://nakadakenta.github.io/ero_ads_memory/
+- リポジトリURL : https://github.com/nakadakenta/ero_ads_memory
 
 | ＃ | 説明 |
 | ---- | ---- |
